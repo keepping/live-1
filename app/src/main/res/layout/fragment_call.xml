@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/gift_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/ly_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <include
+                layout="@layout/view_live_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_online"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/red_shape"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="38dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center">
+
+                    <GridView
+                        android:id="@+id/grid_online"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:numColumns="auto_fit"
+                        android:stretchMode="spacingWidthUniform" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_room_des"
+            android:layout_width="172dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_btn_bg"
+            android:gravity="center_vertical"
+            android:padding="4dp"
+            android:text="@string/mic_desc"
+            android:textColor="@color/font_black"
+            android:textSize="10sp"
+            android:visibility="gone"
+            tools:ignore="RtlHardcoded,SmallSp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/diamonds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@color/color_30000000"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="2dp"
+                android:textColor="@color/color_ffffff"
+                android:textSize="12sp"
+                android:visibility="gone"
+                tools:ignore="RtlHardcoded" />
+
+            <Chronometer
+                android:id="@+id/chronometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:format="%s"
+                android:layout_marginLeft="25dp"
+                android:gravity="top"
+                android:textColor="@color/color_80ffffff"
+                android:textSize="14sp"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5" />
+
+        <RelativeLayout
+            android:id="@+id/ly_gift_view"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:paddingBottom="10dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/gift_info"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/room_chat_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="30dp"
+                android:paddingRight="40dp">
+
+                <TextView
+                    android:id="@+id/txt_from_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="0dp"
+                    android:maxLines="1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txt_gift_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:maxLines="1"
+                    android:text="@string/send_pepole2"
+                    android:textColor="#FFFF00"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_gift"
+                android:layout_width="65dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="-30dp"
+                android:layout_toRightOf="@+id/gift_info"
+                android:scaleType="centerInside"
+                fresco:fadeDuration="300"
+                fresco:placeholderImage="@drawable/icon_gift"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/numText"
+                style="@style/AudioFileInfoOverlayText"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/img_gift"
+                android:visibility="visible"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/numText1"
+                style="@style/AudioFileInfoOverlayText1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/img_gift"
+                android:visibility="visible" />
+
+            <ImageView
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="@null"
+                android:scaleType="centerInside"
+                android:src="@drawable/red_shape" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/gif_img_head"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="1dp"
+                fresco:fadeDuration="300"
+                fresco:placeholderImage="@drawable/default_face_icon"
+                fresco:roundAsCircle="true" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/chatline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="#00000000"
+                android:clickable="true"
+                android:divider="@android:color/white"
+                android:paddingLeft="10dp"
+                android:scrollbars="none"
+                android:stackFromBottom="true"
+                android:transcriptMode="alwaysScroll"
+                tools:ignore="RtlSymmetry" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:clipChildren="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="5dp">
+
+            <ImageView
+                android:id="@+id/img_open_send"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_gravity="bottom"
+                android:contentDescription="@string/chatline"
+                android:padding="10dp"
+                android:src="@drawable/btn_room_chat_n" />
+
+            <ImageView
+                android:id="@+id/btn_share"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_gravity="bottom"
+                android:contentDescription="@string/share"
+                android:padding="10dp"
+                android:src="@drawable/btn_room_share_n"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/btn_Follow"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_gravity="bottom"
+                android:contentDescription="@string/follow"
+                android:padding="10dp"
+                android:src="@drawable/btn_room_concern_n"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/button_call_switch_camera"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_gravity="bottom"
+                android:contentDescription="@string/switch_camera"
+                android:padding="10dp"
+                android:src="@drawable/btn_room_exchange_n"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/button_beautiful"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_gravity="bottom"
+                android:contentDescription="@string/switch_camera"
+                android:padding="10dp"
+                android:src="@drawable/btn_start_play_beautiful_n"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/button_lamp"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_gravity="bottom"
+                android:contentDescription="@string/switch_camera"
+                android:padding="10dp"
+                android:src="@drawable/btn_start_play_flash_n"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/giftbtn"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginRight="10dp"
+                android:contentDescription="@string/gift"
+                android:padding="10dp"
+                android:src="@drawable/btn_room_gift_n" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_send"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="#90FFFFFF"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <EditText
+                android:id="@+id/txt_msg"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/please_input"
+                android:imeOptions="actionSend"
+                android:maxLength="140"
+                android:maxLines="1"
+                android:textColor="#22202D"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="1.5dp"
+                android:layout_height="30dp"
+                android:background="#90CECECE" />
+
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:text="@string/send"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_gift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/giftView"
+                layout="@layout/view_giftlayout"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.angelatech.yeyelive.view.PeriscopeLayout
+        android:id="@+id/PeriscopeLayout"
+        android:layout_width="80dp"
+        android:layout_height="240dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="44dp"
+        tools:ignore="RtlHardcoded" />
+
+</RelativeLayout>

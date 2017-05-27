@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:gravity="center">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/item_chatRoom_gallery_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="1dp"
+            android:src="@drawable/default_face_icon"
+            fresco:fadeDuration="300"
+            fresco:roundAsCircle="true" />
+
+        <ImageView
+            android:id="@+id/iv_vip"
+            android:layout_width="11dp"
+            android:layout_height="11dp"
+            android:layout_marginBottom="2dp"
+            android:layout_alignBottom="@id/item_chatRoom_gallery_image"
+            android:layout_alignRight="@id/item_chatRoom_gallery_image"
+            android:visibility="gone"
+            android:src="@drawable/icon_vip_mark" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/item_chatroom_gallery_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:visibility="gone" />
+</LinearLayout>

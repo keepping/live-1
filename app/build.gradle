@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+
+    defaultConfig {
+        applicationId "com.angelatech.yeyelive"
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 14
+        versionName "1.8.99"
+        multiDexEnabled true
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "x86_64", "mips"
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("key/Yeye.jks")
+            storePassword "4&12FUI9?:>45\$^%\$12765!"
+            keyAlias ""
+            keyPassword "4&12FUI9?:>45\$^%\$12765!"
+        }
+    }
+
+    buildTypes {
+        release {
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles 'proguard-android.txt'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir(['libs'])
+            java.srcDirs = ['src/main/java', 'src/test/java/']
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                //这里修改apk文件名
+                def fileName = "yeye_live.apk"
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':LibCommon')
+    compile project(':LibNotification')
+    compile project(':LibSocket')
+    compile project(':LibView')
+    compile project(':LibWeb')
+    compile project(':LibImageLoader')
+    compile project(':LibGooglePay')
+    compile project(':LibQiniu')
+    compile 'com.android.support:multidex:'
+    //定位用到
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.google.android.gms:play-services-maps:7.8.+'
+    compile 'com.google.android.gms:play-services-location:7.8.+'
+    compile 'com.facebook.android:facebook-android-sdk:4.7.+'
+    testCompile 'junit:junit:4.12'
+    compile 'junit:junit:4.12'
+    compile project(':LibCocos2dx')
+    compile project(':QupaiLiveSDK')
+    compile files('libs/gson-2.6.2.jar')
+    compile 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.1.5
+    compile 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
+}
